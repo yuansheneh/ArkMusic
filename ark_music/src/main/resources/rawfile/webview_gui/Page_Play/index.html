@@ -1,0 +1,70 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArkMusic</title>
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <link rel="stylesheet" href="css/meta_img.css">
+    <link rel="stylesheet" href="css/title.css">
+    <link rel="stylesheet" href="css/vol_control.css">
+    <link rel="stylesheet" href="css/playback_range.css">
+    <link rel="stylesheet" href="css/play_control.css">
+</head>
+<body>
+    
+    <!-- 专辑封面 -->
+    <div id="meta_img" class="play_page_meta_img"><img src="file/CD.png"></div>
+    
+    <!-- 标题 -->
+    <div class="play_page_title"><div id="play_page_title_scroll"><p id="title">未知音频</p></div></div>
+    <!-- 副标题 -->
+    <div class="play_page_sub_title"><div id ="play_page_sub_title_scroll"><p id="sub_title">未知艺术家</p></div></div>
+
+    <!-- 音量控制器 -->
+    <div class="vol_control">
+        <!--滑动框架-->
+        <div class="vol_control_flex_frame">
+            <!--进度滑块-->
+            <input type="range" id="vol_control" name="vol_control" min="0", max="15", value="4"/>
+            <!--进度展示条-->
+            <div id="vol_control_screen"></div>
+            <!--未展开前的图片-->    
+            <img src="file/vol_control.svg">
+        </div>
+    </div>
+
+    <!-- 控制框架 -->
+    <div class="play_controller">
+        <button id="btn_last"><img src="file/play_last.svg" style="width: 50%; height: 50%; margin-right: 10%;"></button>
+        <button id="btn_play"><img src="file/play_play.svg" style="width: 50%; height: 50%; margin-left: 15%;"></button>
+        <button id="btn_next"><img src="file/play_next.svg" style="width: 50%; height: 50%; margin-left: 10%;"></button>
+    </div>
+    
+    <!--进度条-->
+    <div class="play_page_playback_frame">
+
+        <!--进度滑块-->
+        <input type="range" id="playback_control" min="0", max="60000", value="30000"/>
+        <!--进度展示条-->
+        <div id="play_page_playback_screen"></div>
+
+        <!--时间显示-->
+        <p id="current_time" style="left: 0;">00:00</p>
+        <!--时长-->
+        <p id="total_time" style="right: 0;">00:00</p>
+
+    </div>
+
+
+    <script src="js/vol_control.js"></script>
+    <script src="js/title_scroll.js"></script>
+
+</body>
+</html>

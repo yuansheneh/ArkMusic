@@ -1,36 +1,56 @@
-.taskbar {
+#taskbar {
 
     position: fixed;
     z-index: 900;
-    top: calc(100vh - 75px);
+    bottom: 25px;
     left: 5vw;
-
-    height: 50px;
     width: 90vw;
-    background-color: #eaeaea;
+    height: 50px;
+    background-color: rgba(234, 234, 234, 0.5);
+    backdrop-filter: blur(2.5px);
     border-radius: 100px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
     display: flex;
     align-items: center;
     justify-content: space-around;
 
-    transition: transform 0.1s ease;
+    transition: all 0.3s ease;
 
 }
-.taskbar:active {
+#taskbar.active {
+    transition: all 0.1s ease;
     transform: scale(0.9);
 }
+#taskbar.hide {
+    transition: all 0.3s ease;
+    width: 100vw;
+    height: 70px;
+    left: 0vw;
+    bottom: -100px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+#taskbar img {
+    z-index: 910;
+}
 
-.slider {
+#taskbar_selector {
+
     position: absolute;
-    width: 45vw;
-    height: 50px;
-    background-color: rgba(70, 70, 70, 0.5);
-    border-radius: 150px;
-    transition: left 0.3s ease;
-    z-index: 900;
-    top: 50%;
-    transform: translate(0vw,-25px);
-    left: 15%; /* 初始位置在播放图标处 */
+    z-index: 905;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(71, 71, 71, 0.5);
+    border-radius: 100px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2);
+    left: 25%;
+    
+    transition: transform 0.2s ease;
+
+}
+#taskbar_selector.main {
+    transform: translateX(-50%);
+}
+#taskbar_selector.files {
+    transform: translateX(50%);
 }

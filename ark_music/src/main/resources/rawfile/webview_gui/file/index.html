@@ -1,0 +1,49 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArkMusic</title>
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+    <link rel="stylesheet" href="css/taskbar.css">
+    <link rel="stylesheet" href="css/main_gui.css">
+    <link rel="stylesheet" href="css/music_bar.css">
+</head>
+<body>
+    
+    <!-- 主界面框架 -->
+     <div id="main_gui">
+        <button onclick="taskbar_play()">播放页</button>
+        <button onclick="taskbar_files()">文件页</button>
+        <button onclick="taskbar_other()">其他页</button>
+     </div>
+
+    <!-- 音乐控制栏 -->
+    <div id="music_bar">
+        <!-- 遮罩框架 -->
+         <div id="music_bar_frame">
+            <!-- 音频控制器 -->
+            <div id=meta_img><img src="file/CD.png"></div>
+            <div id="title_frame"><p id="title">这是一段非常长的测试音频</p></div>
+         </div>
+    </div>
+    
+    <!-- 底部状态栏 -->
+    <div id="taskbar">
+        <!--播放主页图标-->
+        <img src="file/main.svg" style="width: 35px; height: 35px;">
+        <img src="file/files.svg" style="width: 40px; height: 40px;">
+        <!-- 选择滑块 -->
+        <div id="taskbar_selector"></div>
+        <!-- 播放按钮 -->
+    </div>
+    
+    <!-- js -->
+    <script src="js/song_bar.js"></script>
+    <script src="js/taskbar.js"></script>
+
+</body>
+</html>

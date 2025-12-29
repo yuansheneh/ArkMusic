@@ -56,23 +56,26 @@
       },
       {
         "name": "ohos.permission.READ_MEDIA",
-        "reason": "$string:read_muaic_reason",
+        "reason": "$string:read_music_reason",
         "usedScene": {
           "abilities": [
-            "EntryAbility"
+            "Ark_musicAbility"
           ],
           "when": "always"
         }
       },
       {
-        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
+        "name": "ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY",
         "reason": "$string:get_bg_running",
         "usedScene": {
           "abilities": [
-            "EntryAbility"
+            "Ark_musicAbility"
           ],
           "when": "always"
         }
+      },
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING"
       }
     ]
   }

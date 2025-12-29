@@ -1,0 +1,18 @@
+.play_page_meta_img {
+    
+    width: 90vw;
+    height: 90vw;;
+    background-color: #eaeaea;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+
+    overflow: hidden;
+    
+}
+.play_page_meta_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}

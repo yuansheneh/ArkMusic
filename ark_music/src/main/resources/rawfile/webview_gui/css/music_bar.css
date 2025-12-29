@@ -1,0 +1,188 @@
+/* <!-- 音乐控制栏 --> */
+#music_bar {
+
+    position: fixed;
+    z-index: 800;
+    bottom: 25px;
+    left: 5vw;
+    width: 90vw;
+    height: 50px;
+    background-color: rgba(218, 218, 218, 0.5);
+    backdrop-filter: blur(2.5px);
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+
+    transition: all 0.3s ease;
+
+}
+#music_bar.active {
+    transition: all 0.1s ease;
+    transform: scale(0.9);
+}
+#music_bar.show {
+    height: 100px;
+}
+
+/* <!-- 遮罩框架 --> */
+#music_bar_frame {
+
+    position: absolute;
+    z-index: 820;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+
+    transition: all 0.3s ease;
+
+}
+#music_bar_frame.show {
+    top: 0; 
+}
+
+/* <!-- 音频控制器 --> */
+.music_bar_meta_img {
+    position: absolute;
+    z-index: 810;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(170, 170, 170, 0.2);
+    top: 10px;
+    left: 12.5px;
+}
+.music_bar_meta_img img {
+    width: 100%;
+    height: 100%;
+}
+
+#music_bar_title {
+    
+
+    position: absolute;
+    z-index: 810;
+    width: 110px;
+    height: 30px;
+    border-radius: 5px;
+    top: 10px;
+    left: 55px;
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+}
+#music_bar_title.scrolling {
+   mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+   mask-composite: exclude;
+   -webkit-mask-composite: xor;
+}
+#music_bar_title_scroll {
+    
+    position: absolute;
+    z-index: 810;
+    width: auto;
+    height: 30px;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+#music_bar_title p {
+    font-weight: 450;
+    font-size: 10px;
+    color: rgb(100, 100, 100);
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+/* 标题滚动动画 */
+@keyframes scrollTitle {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* <!-- 播放三大金刚 --> */
+.play_button {
+
+    position: absolute;
+    z-index: 875;
+    width: 30px;
+    height: 30px;
+    border: none;
+    top: 10px;
+    background-color: rgba(200, 200, 200, 0);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    transition: all 0.1s ease;
+
+}
+.play_button:active {
+    transform: scale(0.9);
+}
+.play_button img {
+    width: 150%;
+    height: 150%;
+}
+
+/* <!-- 进度滑块框架 --> */
+.music_bar_playback_frame {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+}
+.music_bar_playback_frame input {
+    position: absolute;
+    z-index: 850; /* 确保滑块在最上层 */
+    width: 100%;
+    height: 100%;
+    background: transparent; /* 隐藏背景 */
+    opacity: 0;
+}
+.music_bar_playback_frame input::-webkit-slider-runnable-track {
+    /* 隐藏滑块背景 */
+    background: transparent;
+    border: none;
+}
+.music_bar_playback_frame input::-webkit-slider-thumb {
+    /* 隐藏滑块thumb的默认样式 */
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+}
+#music_bar_playback_screen {
+    position: absolute;
+    z-index: 805;
+    width: 0; /* 初始宽度为0 */
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border-radius: 25px;
+    transition: width 0.05s ease; /* 添加过渡效果 */
+    pointer-events: none; /* 确保不会阻挡滑块的点击 */
+}

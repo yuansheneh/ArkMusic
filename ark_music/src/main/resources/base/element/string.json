@@ -17,12 +17,16 @@
       "value": "显示webview界面。"
     },
     {
-      "name": "read_muaic_reason",
-      "value": "我是音乐播放器啊！"
+      "name": "read_music_reason",
+      "value": "获取播放本地歌曲"
     },
     {
       "name": "get_bg_running",
       "value": "后台放歌"
+    },
+    {
+      "name": "get_public_media",
+      "value": "没办法要分析目录结构所以要这个权限。。。"
     },
     {
       "name": "additional_desc",
