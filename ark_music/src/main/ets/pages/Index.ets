@@ -12,7 +12,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { wantAgent } from '@kit.AbilityKit';
 import { avSession } from '@kit.AVSessionKit';
 import promptAction from '@ohos.promptAction';
-
+import { vibrator } from '@kit.SensorServiceKit';
 
 // 导入其他ets
 import {
@@ -53,6 +53,13 @@ struct ArkMusic_Component {
     promptAction.showToast({ message: '歌曲扫描完成！', duration: 3000 });
   }
 
+  // 震动
+  vib() {
+    try {
+      vibrator.startVibration({ type: 'preset', effectId: 'haptic.common.click', count: 1 }, { usage: 'touch' })
+    } catch (e) { console.log(`马达震动失败：${e}`) }
+  }
+
   // 监听系统音频
   listen_system_volume() {
     console.log('监听音频启动！')
@@ -68,6 +75,7 @@ struct ArkMusic_Component {
       // 更新
       this.volume_level = streamVolumeEvent.volume
       this.ark_music_ui.runJavaScript(`change_volume(${this.volume_level})`)
+      this.vib();
     });
   }
 

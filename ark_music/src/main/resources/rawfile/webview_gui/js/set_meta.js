@@ -67,6 +67,10 @@ function set_song_image(byteString) {
             // 加载成功，清空div并添加新图片
             meta_img.innerHTML = '';
             meta_img.appendChild(img);
+            
+            // 获取图片平均色并设置为body背景色
+            getAverageColorAndSetBackground(img);
+            
             // 使用完成后释放blob URL以节省内存
             img.onload = null; // 清除事件处理器
         };
@@ -90,5 +94,64 @@ function set_song_image(byteString) {
         const defaultImg = new Image();
         defaultImg.src = 'file/CD.png';
         meta_img.appendChild(defaultImg);
+    }
+}
+
+// 新增函数：获取图片平均色值并设置为body背景色
+function getAverageColorAndSetBackground(img) {
+    try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // 设置canvas尺寸为图片尺寸（可以缩小处理以提高性能）
+        const width = img.width;
+        const height = img.height;
+        
+        canvas.width = width;
+        canvas.height = height;
+        
+        // 绘制图片到canvas
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        // 获取图片像素数据
+        const imageData = ctx.getImageData(0, 0, width, height);
+        const data = imageData.data;
+        
+        let r = 0, g = 0, b = 0;
+        let count = 0;
+        
+        // 计算所有像素的平均颜色
+        for (let i = 0; i < data.length; i += 4) {
+            // 跳过完全透明的像素
+            if (data[i + 3] !== 0) {
+                r += data[i];
+                g += data[i + 1];
+                b += data[i + 2];
+                count++;
+            }
+        }
+        
+        if (count > 0) {
+            r = Math.floor(r / count);
+            g = Math.floor(g / count);
+            b = Math.floor(b / count);
+        } else {
+            // 如果没有有效像素，使用默认颜色
+            r = 128;
+            g = 128;
+            b = 128;
+        }
+        
+        // 设置body背景色
+        document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        
+        // 清理canvas
+        canvas.width = 0;
+        canvas.height = 0;
+        
+    } catch (error) {
+        console.error('获取图片平均色时出错:', error);
+        // 出错时使用默认颜色
+        document.body.style.backgroundColor = '#808080'; // 灰色
     }
 }

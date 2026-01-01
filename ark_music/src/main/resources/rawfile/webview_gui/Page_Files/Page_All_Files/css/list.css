@@ -29,3 +29,8 @@
     align-items: center;
 
 }
+
+/* 确保滚动容器可以正确滚动 */
+.list_frame {
+    overflow-y: auto;
+}
